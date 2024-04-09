@@ -3,7 +3,7 @@ import Config
 # Configure your database
 config :kayuk, Kayuk.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "root",
   hostname: "localhost",
   database: "kayuk_dev",
   stacktrace: true,
