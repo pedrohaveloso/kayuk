@@ -1,4 +1,52 @@
-<main x-data={@count}>
-  <h1 x-text="count"></h1>
-  <button @click="count++" type="button">Increment</button>
-</main>
+<header class="w-full p-4 px-6 flex justify-between items-center">
+  <a href="/" class="font-bold text-xl items-center flex gap-1">
+    <span class="h-6 w-6 flex items-center justify-center">
+      <.icon name="hero-bell-solid" class="logo-icon hidden h-6 w-6 " />
+      <.icon name="hero-chat-bubble-left-right-solid" class="logo-icon hidden h-6 w-6 " />
+      <.icon name="hero-cog-8-tooth-solid" class="logo-icon hidden h-6 w-6 " />
+      <.icon name="hero-globe-alt-solid" class="logo-icon hidden h-6 w-6 " />
+    </span>
+    Kayuk
+  </a>
+
+  <menu class="flex gap-8 items-center font-medium">
+    <li class="">
+      <a href="">
+        <button type="button">
+          Entrar
+        </button>
+      </a>
+    </li>
+
+    <li class="bg-slate-100 p-4 px-8 rounded-xl">
+      <a href="/register">
+        <button type="button">
+          Cadastrar-se
+        </button>
+      </a>
+    </li>
+  </menu>
+</header>
+
+<main></main>
+
+<script>
+  const icons = document.querySelectorAll(".logo-icon");
+  const limit = icons.length;
+
+  icons[0].classList.remove("hidden");
+
+  let index = 0;
+
+  setInterval(() => {
+    icons[index].classList.add("hidden");
+
+    index++;
+
+    if (index >= limit) {
+      index = 0;
+    }
+
+    icons[index].classList.remove("hidden");
+  }, 1000);
+</script>

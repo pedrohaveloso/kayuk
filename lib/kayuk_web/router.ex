@@ -18,6 +18,8 @@ defmodule KayukWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+
+    live "/login", Lives.Login
   end
 
   # Other scopes may use custom stacks.
