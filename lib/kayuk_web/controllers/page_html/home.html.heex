@@ -1,3 +1,40 @@
+<aside x-data="{ show_menu: true }" class="h-full bg-red-100">
+  <button @click="show_menu = !show_menu" type="button" class="h-12 w-4 bg-emerald-200 rounded-xl">
+    <.icon name="hero-arrow-up-tray" class="bg-emerald-800 h-7 w-7 rotate-90" />
+  </button>
+
+  <nav class="m-2 flex h-full w-fit">
+    <ul
+      class="h-full flex flex-col gap-4 py-4 bg-emerald-50 w-fit rounded-s-xl"
+      x-bind:class="{ 'rounded-e-xl' : !show_menu }"
+    >
+      <%= for option <- @menu do %>
+        <li class="h-8 w-16 flex items-center justify-center">
+          <a href={option[:href]} class="flex w-full items-center justify-center">
+            <.icon class="h-7 w-7" name={option[:icon]} />
+          </a>
+        </li>
+      <% end %>
+    </ul>
+
+    <ul
+      x-show="show_menu"
+      x-transition
+      class="rounded-e-xl flex flex-col gap-4 ps-0 p-4 bg-emerald-50 w-fit"
+    >
+      <%= for option <- @menu do %>
+        <li class="h-8 flex items-center justify-start">
+          <a href={option[:href]} class="flex items-center justify-start">
+            <p>
+              <%= option[:name] %>
+            </p>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+</aside>
+<!--
 <header class="w-full p-4 px-6 flex justify-between items-center">
   <a href="/" class="font-bold text-xl items-center flex gap-1">
     <span class="h-6 w-6 flex items-center justify-center">
@@ -50,3 +87,4 @@
     icons[index].classList.remove("hidden");
   }, 1000);
 </script>
+-->
