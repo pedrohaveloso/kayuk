@@ -5,14 +5,11 @@
 @import "tailwindcss/utilities";
 
 * {
-  @apply text-slate-600;
-
+  @apply text-emerald-950;
+  
   margin: 0px;
   padding: 0px;
 
   font-family: 'Poppins', 'Courier New', Courier, monospace;
 }
 
-body, html {
-  min-height: 100dvh;
-}
