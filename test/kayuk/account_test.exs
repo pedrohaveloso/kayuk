@@ -35,7 +35,12 @@ defmodule Kayuk.AccountTest do
 
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
-      update_attrs = %{name: "some updated name", password: "some updated password", email: "some updated email"}
+
+      update_attrs = %{
+        name: "some updated name",
+        password: "some updated password",
+        email: "some updated email"
+      }
 
       assert {:ok, %User{} = user} = Account.update_user(user, update_attrs)
       assert user.name == "some updated name"

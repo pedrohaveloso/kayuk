@@ -17,7 +17,7 @@ defmodule KayukWeb.Router do
   scope "/", KayukWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/home", Lives.Home
 
     live "/login", Lives.Login
   end
