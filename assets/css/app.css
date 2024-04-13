@@ -5,7 +5,7 @@
 @import "tailwindcss/utilities";
 
 * {
-  @apply text-emerald-950;
+  @apply text-gray-900;
   
   margin: 0px;
   padding: 0px;
