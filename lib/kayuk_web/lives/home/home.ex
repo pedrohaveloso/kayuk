@@ -4,7 +4,4 @@ defmodule KayukWeb.Lives.Home do
   def mount(_params, _session, socket) do
     {:ok, socket}
   end
-
-  def menu_option() do
-  end
 end

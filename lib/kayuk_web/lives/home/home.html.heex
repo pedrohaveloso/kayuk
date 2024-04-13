@@ -1,3 +1,52 @@
-<div x-data="{ data: 0 }" id="home-page" class="flex">
+<div id="home" class="flex w-screen">
   <.aside_menu />
+
+  <main class="ms-0 m-2 flex flex-col gap-2 h-full w-full">
+    <section x-data="{ selected: 0 }" class="p-4 px-6 bg-gray-50 rounded-3xl">
+      <span class="flex justify-between items-center">
+        <h1 class="text-lg font-bold text-gray-600 flex items-center gap-2 w-fit">
+          <.icon name="hero-calendar-solid" class="text-gray-600" /> Agenda
+        </h1>
+
+        <menu class="flex gap-1 items-center">
+          <li class="border-solid">
+            <button
+              class="transition-all duration-500 rounded-xl p-2 px-6 h-full"
+              x-bind:class="selected === 0 ? 'bg-gray-400 hover:bg-gray-300' : 'bg-gray-200 hover:bg-gray-150'"
+              @click="selected = 0"
+              type="button"
+            >
+              Expired
+            </button>
+          </li>
+
+          <hr class="bg-gray-300 w-0.5 rounded-xl h-6" />
+
+          <li>
+            <button
+              class="transition-all duration-500 rounded-xl p-2 px-6 h-full"
+              x-bind:class="selected === 1 ? 'bg-gray-400 hover:bg-gray-300' : 'bg-gray-200 hover:bg-gray-150'"
+              @click="selected = 1"
+              type="button"
+            >
+              Today
+            </button>
+          </li>
+
+          <hr class="bg-gray-300 w-0.5 rounded-xl h-6" />
+
+          <li>
+            <button
+              class="bg-gray-200 hover:bg-gray-100 transition-all duration-500 rounded-xl p-2 px-6 h-full"
+              x-bind:class="selected === 2 ? 'bg-gray-400 hover:bg-gray-300' : 'bg-gray-200 hover:bg-gray-150'"
+              @click="selected = 2"
+              type="button"
+            >
+              Next
+            </button>
+          </li>
+        </menu>
+      </span>
+    </section>
+  </main>
 </div>
