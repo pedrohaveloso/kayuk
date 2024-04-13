@@ -1,9 +1,11 @@
 defmodule Kayuk.Account.User do
   use Ecto.Schema
+
   import Ecto.Changeset
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
+
   schema "users" do
     field :name, :string
     field :password, :string
@@ -17,8 +19,8 @@ defmodule Kayuk.Account.User do
     user
     |> cast(attrs, [:name, :password, :email])
     |> validate_required([:name, :password, :email])
-    |> validate_length(:name, 50)
-    |> validate_length(:email, 255)
+    |> validate_length(:name, max: 50, min: 5)
+    |> validate_length(:email, max: 255)
     |> validate_format(:email, ~r/@/)
     |> unique_constraint(:email)
   end

@@ -28,13 +28,19 @@ defmodule KayukWeb.CoreComponents do
       x-bind:class="extend ? 'w-60' : 'w-20'"
       class="h-screen sticky top-0 bottom-0 start-0 p-2 transition-all duration-500"
     >
-      <nav class="flex h-full justify-center bg-gray-100 rounded-3xl p-2 overflow-scroll no-scrollbar ">
+      <nav class={[
+        "flex h-full justify-center bg-gray-100 rounded-3xl",
+        "p-2 overflow-scroll no-scrollbar"
+      ]}>
         <ol class="flex flex-col gap-2 items-center justify-center w-full h-full rounded-3xl">
           <li class="w-full">
             <button
-              title="Menu"
-              class="min-h-12 min-w-12 w-min hover:bg-gray-200 transition-all duration-500 rounded-full flex items-center justify-center"
               @click="extend = !extend"
+              title="Menu"
+              class={[
+                "min-h-12 min-w-12 w-min hover:bg-gray-200 transition-all",
+                "duration-500 rounded-full flex items-center justify-center"
+              ]}
               type="button"
             >
               <.icon class="h-8 w-8 text-gray-700" name="hero-bars-3" />
@@ -63,10 +69,13 @@ defmodule KayukWeb.CoreComponents do
     ~H"""
     <li>
       <a
+        x-bind:class="extend ? 'w-52 ps-2' : 'w-12'"
         title={@option.name}
         href={@option.href}
-        x-bind:class="extend ? 'w-52 ps-2' : 'w-12'"
-        class="min-h-12 min-w-12 bg-gray-200 hover:bg-gray-300 transition-all duration-500 rounded-full flex items-center"
+        class={[
+          "min-h-12 min-w-12 bg-gray-200 hover:bg-gray-300 transition-all",
+          "duration-500 rounded-full flex items-center"
+        ]}
       >
         <div class="text-center p-2">
           <.icon class="h-8 w-8 text-gray-700" name={@option.icon} />
@@ -79,6 +88,26 @@ defmodule KayukWeb.CoreComponents do
         </div>
       </a>
     </li>
+    """
+  end
+
+  def input(%{field: %Phoenix.HTML.FormField{} = field} = assigns) do
+    assigns
+    |> input()
+  end
+
+  def input(%{type: "text"} = assigns) do
+    ~H"""
+    <input type="text" name={@field.name} id={@field.id} value={@field.value} class="..." />
+    """
+  end
+
+  def error(assigns) do
+    ~H"""
+    <p class="mt-3 flex gap-3 text-sm leading-6 text-rose-600 phx-no-feedback:hidden">
+      <.icon name="hero-exclamation-circle-mini" class="mt-0.5 h-5 w-5 flex-none" />
+      <%= render_slot(@inner_block) %>
+    </p>
     """
   end
 end
